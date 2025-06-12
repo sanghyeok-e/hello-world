@@ -1,36 +1,42 @@
-# Welcome to GitHub
+# Directional Forecasting of Weekly Stock Returns
 
-Welcome to GitHub—where millions of developers work together on software. Ready to get started? Let’s learn how this all works by building and publishing your first GitHub Pages website!
+This repository contains the code and data used in the paper:
 
-## Repositories
+**"Directional Forecasting of Weekly Stock Returns: Revisiting Market Efficiency with Deep Neural Networks"**  
+by Sang-Hyeok Lee (Korea Maritime Institute)
 
-Right now, we’re in your first GitHub **repository**. A repository is like a folder or storage space for your project. Your project's repository contains all its files such as code, documentation, images, and more. It also tracks every change that you—or your collaborators—make to each file, so you can always go back to previous versions of your project if you make any mistakes.
+## 📚 Abstract
 
-This repository contains three important files: The HTML code for your first website on GitHub, the CSS stylesheet that decorates your website with colors and fonts, and the **README** file. It also contains an image folder, with one image file.
+This study reformulates short-horizon return forecasting as a binary classification problem. Using deep neural networks, we predict whether the average return of the next week exceeds that of the current week. Our best model (MLP) achieved a test accuracy of **71.62%**, statistically significant and economically meaningful.
 
-## Describe your project
+## 📂 Project Structure
 
-You are currently viewing your project's **README** file. **_README_** files are like cover pages or elevator pitches for your project. They are written in plain text or [Markdown language](https://guides.github.com/features/mastering-markdown/), and usually include a paragraph describing the project, directions on how to use it, who authored it, and more.
+- `data/`: Includes raw and processed S&P 500 datasets
+- `src/`: Model definitions, training logic, evaluation, and trading strategy simulation
+- `notebook/`: Exploratory data analysis
+- `results/`: Figures and metrics from empirical evaluation
+- `paper/`: PDF copy of the published manuscript
 
-[Learn more about READMEs](https://help.github.com/en/articles/about-readmes)
+## 🔍 Methods
 
-## Your first website
+- **Modeling**: 48 DNN variants (MLP, FCN, ResNet)
+- **Validation**: Accuracy, F1-score, binomial tests, rolling-window stability
+- **Economics**: Cumulative Return, Sharpe Ratio, and VaR via 4 trading strategies
 
-**GitHub Pages** is a free and easy way to create a website using the code that lives in your GitHub repositories. You can use GitHub Pages to build a portfolio of your work, create a personal website, or share a fun project that you coded with the world. GitHub Pages is automatically enabled in this repository, but when you create new repositories in the future, the steps to launch a GitHub Pages website will be slightly different.
+## 🚀 How to Run
 
-[Learn more about GitHub Pages](https://pages.github.com/)
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-## Rename this repository to publish your site
+# Preprocess data
+python src/preprocessing.py
 
-We've already set-up a GitHub Pages website for you, based on your personal username. This repository is called `hello-world`, but you'll rename it to: `username.github.io`, to match your website's URL address. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
+# Train model
+python src/train.py --model MLP-XII
 
-Let's get started! To update this repository’s name, click the `Settings` tab on this page. This will take you to your repository’s settings page. 
-
-![repo-settings-image](https://user-images.githubusercontent.com/18093541/63130482-99e6ad80-bf88-11e9-99a1-d3cf1660b47e.png)
-
-Under the **Repository Name** heading, type: `username.github.io`, where username is your username on GitHub. Then click **Rename**—and that’s it. When you’re done, click your repository name or browser’s back button to return to this page.
-
-<img width="1039" alt="rename_screenshot" src="https://user-images.githubusercontent.com/18093541/63129466-956cc580-bf85-11e9-92d8-b028dd483fa5.png">
+# Evaluate results
+python src/evaluate.py
 
 Once you click **Rename**, your website will automatically be published at: https://your-username.github.io/. The HTML file—called `index.html`—is rendered as the home page and you'll be making changes to this file in the next step.
 
